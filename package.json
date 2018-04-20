@@ -1,6 +1,6 @@
 {
   "name": "react-ssr-error-boundary",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React renderToString error boundary fallback",
   "main": "index.js",
   "repository": "https://github.com/zekchan/react-ssr-error-boundary",
