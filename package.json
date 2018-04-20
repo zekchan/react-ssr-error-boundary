@@ -1,0 +1,49 @@
+{
+  "name": "react-ssr-error-boundary",
+  "version": "1.0.0",
+  "description": "React renderToString error boundary fallback",
+  "main": "index.js",
+  "repository": "https://github.com/zekchan/react-ssr-error-boundary",
+  "scripts": {
+    "build": "babel src/index.js > index.js",
+    "test": "jest",
+    "prepublish": "npm run build"
+  },
+  "author": "Ilya Groshev <groshev.i.d@gmail.com>",
+  "keywords": [
+    "react"
+  ],
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "16.*",
+    "react-dom": "16.*"
+  },
+  "files": [
+    "README.md",
+    "src/index.js",
+    "index.js"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "codecov": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.4.3",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  }
+}
