@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 const server = typeof window === 'undefined' && require('./server')
 
 export function withContext (contextTypes = {}) {
-  const ProvideContext = server && server.makeProvider(contextTypes)
+  const ProvideContext = server && server._makeProvider(contextTypes)
 
   class ServerBoundary extends Component {
     static defaultProps = {
@@ -21,7 +21,7 @@ export function withContext (contextTypes = {}) {
     }
 
     render () {
-      if (server) return server.render(this, ProvideContext)
+      if (server) return server._render(this, ProvideContext)
       return <div>{this.state.elementToRender}</div>
     }
   }
