@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/zekchan/react-ssr-error-boundary",
   "scripts": {
-    "build": "babel src/index.js > index.js",
+    "build": "babel src --out-dir . --ignore '*.test.js'",
     "test": "jest",
     "prepublish": "npm run build"
   },
