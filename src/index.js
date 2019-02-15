@@ -21,12 +21,12 @@ export function withContext (contextTypes = {}) {
     }
     static contextTypes = contextTypes
     state = {
-      elementToRender: this.props.children
+      hasError: false
     }
 
     componentDidCatch () {
       this.setState({
-        elementToRender: this.props.fallBack()
+        hasError: true
       })
     }
 
@@ -44,7 +44,7 @@ export function withContext (contextTypes = {}) {
         }
       }
 
-      return <div>{this.state.elementToRender}</div>
+      return <div>{this.state.hasError ? this.props.fallback() : this.props.children}</div>
     }
   }
 
