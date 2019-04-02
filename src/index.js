@@ -1,19 +1,9 @@
 import React, { Component } from 'react'
 
-const isServer = typeof window === 'undefined'
+const server = typeof window === 'undefined' && require('./server')
 
 export function withContext (contextTypes = {}) {
-  class ProvideContext extends Component {
-    static childContextTypes = contextTypes
-
-    getChildContext () {
-      return this.props.context
-    }
-
-    render () {
-      return this.props.children
-    }
-  }
+  const ProvideContext = server && server._makeProvider(contextTypes)
 
   class ServerBoundary extends Component {
     static defaultProps = {
@@ -31,19 +21,7 @@ export function withContext (contextTypes = {}) {
     }
 
     render () {
-      if (isServer) {
-        try {
-          const __html = require('react-dom/server').renderToStaticMarkup(
-            <ProvideContext context={this.context}>
-              {this.props.children}
-            </ProvideContext>
-          )
-          return <div dangerouslySetInnerHTML={{__html}} />
-        } catch (e) {
-          return <div>{this.props.fallBack()}</div>
-        }
-      }
-
+      if (server) return server._render(this, ProvideContext)
       return <div>{this.state.elementToRender}</div>
     }
   }
