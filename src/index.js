@@ -11,18 +11,18 @@ export function withContext (contextTypes = {}) {
     }
     static contextTypes = contextTypes
     state = {
-      elementToRender: this.props.children
+      hasError: false
     }
 
     componentDidCatch () {
       this.setState({
-        elementToRender: this.props.fallBack()
+        hasError: true
       })
     }
 
     render () {
       if (server) return server._render(this, ProvideContext)
-      return <div>{this.state.elementToRender}</div>
+      return <div>{this.state.hasError ? this.props.fallBack() : this.props.children}</div>
     }
   }
 
