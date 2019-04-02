@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-16'
 
 import ErrorFallback from './index'
 
-configure({adapter: new Adapter()})
+configure({ adapter: new Adapter() })
 
 function FallBack () {
   return <div>FallBack!</div>
@@ -64,14 +64,14 @@ describe('Client side', () => {
     turnOnErrors()
   })
 
-  it('Renders child component with context dependencies', () => {
+  it('Renders child component with legacy context dependencies', () => {
     function GoodComponent (props, context) {
       return <div>No errors! {context.someContext}</div>
     }
 
     class ContextProvider extends React.Component {
       getChildContext () {
-        return {someContext: 'Context variable'}
+        return { someContext: 'Context variable' }
       }
 
       render () {
@@ -95,7 +95,7 @@ describe('Client side', () => {
     expect(component.html()).toBe('<div><div>No errors! Context variable</div></div>')
   })
 
-  it('Renders child component with new context dependencies', () => {
+  it('Renders child component with context dependencies', () => {
     const Context = React.createContext()
 
     function GoodComponent () {
@@ -108,7 +108,7 @@ describe('Client side', () => {
 
     function ContextProvider (props) {
       return (
-        <Context.Provider value={{someContext: 'Context variable'}}>
+        <Context.Provider value={{ someContext: 'Context variable' }}>
           {props.children}
         </Context.Provider>
       )
@@ -125,7 +125,7 @@ describe('Client side', () => {
     expect(component.html()).toBe('<div><div>No errors! Context variable</div></div>')
   })
 
-  it('Renders child component with multiple new context dependencies', () => {
+  it('Renders child component with multiple contexts dependencies', () => {
     const Context1 = React.createContext()
     const Context2 = React.createContext()
     const Context3 = React.createContext()
@@ -134,15 +134,15 @@ describe('Client side', () => {
       return (
         <Context1.Consumer>
           {context1 => (
-              <Context2.Consumer>
-                {context2 => (
-                    <Context3.Consumer>
-                      {context3 => (
-                          <div>No errors! {context1.someContext} {context2.someContext} {context3.someContext}</div>
-                      )}
-                    </Context3.Consumer>
-                )}
-              </Context2.Consumer>
+            <Context2.Consumer>
+              {context2 => (
+                <Context3.Consumer>
+                  {context3 => (
+                    <div>No errors! {context1.someContext} {context2.someContext} {context3.someContext}</div>
+                  )}
+                </Context3.Consumer>
+              )}
+            </Context2.Consumer>
           )}
         </Context1.Consumer>
       )
@@ -150,9 +150,9 @@ describe('Client side', () => {
 
     function ContextProvider (props) {
       return (
-        <Context1.Provider value={{someContext: 'Context variable1'}}>
-          <Context2.Provider value={{someContext: 'Context variable2'}}>
-            <Context3.Provider value={{someContext: 'Context variable3'}}>
+        <Context1.Provider value={{ someContext: 'Context variable1' }}>
+          <Context2.Provider value={{ someContext: 'Context variable2' }}>
+            <Context3.Provider value={{ someContext: 'Context variable3' }}>
               {props.children}
             </Context3.Provider>
           </Context2.Provider>
@@ -171,7 +171,7 @@ describe('Client side', () => {
     expect(component.html()).toBe('<div><div>No errors! Context variable1 Context variable2 Context variable3</div></div>')
   })
 
-  it('Renders fallBack component if children rendering throws error with new contexts', () => {
+  it('Renders fallBack component if children rendering throws error with contexts', () => {
     const Context = React.createContext()
 
     function BadComponent () {
@@ -188,7 +188,7 @@ describe('Client side', () => {
 
     function ContextProvider (props) {
       return (
-        <Context.Provider value={{someContext: 'Context variable'}}>
+        <Context.Provider value={{ someContext: 'Context variable' }}>
           {props.children}
         </Context.Provider>
       )
