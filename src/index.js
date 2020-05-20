@@ -22,7 +22,7 @@ export function withContext (contextTypes = {}) {
 
     render () {
       if (server) return server._render(this, ProvideContext)
-      return <div>{this.state.hasError ? this.props.fallBack() : this.props.children}</div>
+      return <>{this.state.hasError ? this.props.fallBack() : this.props.children}</>
     }
   }
 
