@@ -33,7 +33,8 @@ describe('Client side', () => {
       <GoodComponent />
     </ErrorFallback>)
 
-    expect(component.html()).toBe('<div><div>No errors!</div></div>')
+expect(component.html()).toBe('<div>No errors!</div>')
+    expect(component.html()).toMatchSnapshot()
   })
 
   it('Renders fallBack component if children rendering throws error', () => {
@@ -46,7 +47,8 @@ describe('Client side', () => {
       <BadComponent />
     </ErrorFallback>)
 
-    expect(component.html()).toBe('<div><div>FallBack!</div></div>')
+expect(component.html()).toBe('<div>FallBack!</div>')
+    expect(component.html()).toMatchSnapshot()
     turnOnErrors()
   })
 
@@ -60,7 +62,8 @@ describe('Client side', () => {
       <BadComponent />
     </ErrorFallback>)
 
-    expect(component.html()).toBe('<div></div>')
+    expect(component.html()).toBe(null)
+    expect(component.html()).toMatchSnapshot()
     turnOnErrors()
   })
 
@@ -92,7 +95,8 @@ describe('Client side', () => {
       </ContextProvider>
     )
 
-    expect(component.html()).toBe('<div><div>No errors! Context variable</div></div>')
+    expect(component.html()).toBe('<div>No errors! Context variable</div>')
+    expect(component.html()).toMatchSnapshot()
   })
 
   it('Renders child component with context dependencies', () => {
@@ -122,7 +126,8 @@ describe('Client side', () => {
       </ContextProvider>
     )
 
-    expect(component.html()).toBe('<div><div>No errors! Context variable</div></div>')
+    expect(component.html()).toBe('<div>No errors! Context variable</div>')
+    expect(component.html()).toMatchSnapshot()
   })
 
   it('Renders child component with multiple contexts dependencies', () => {
@@ -168,7 +173,8 @@ describe('Client side', () => {
       </ContextProvider>
     )
 
-    expect(component.html()).toBe('<div><div>No errors! Context variable1 Context variable2 Context variable3</div></div>')
+    expect(component.html()).toBe('<div>No errors! Context variable1 Context variable2 Context variable3</div>')
+    expect(component.html()).toMatchSnapshot()
   })
 
   it('Renders fallBack component if children rendering throws error with contexts', () => {
@@ -203,7 +209,8 @@ describe('Client side', () => {
       </ContextProvider>
     )
 
-    expect(component.html()).toBe('<div><div>FallBack!</div></div>')
+    expect(component.html()).toBe('<div>FallBack!</div>')
+    expect(component.html()).toMatchSnapshot()
     turnOnErrors()
   })
 })

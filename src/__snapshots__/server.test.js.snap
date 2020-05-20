@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Server side Renders child component with context dependencies 1`] = `"<div><div>No errors! Context variable</div></div>"`;
+
+exports[`Server side Renders child component with multiple new context dependencies 1`] = `"<div><div>No errors! Context variable1 Context variable2 Context variable3</div></div>"`;
+
+exports[`Server side Renders child component without errors 1`] = `"<div><div>No errors!</div></div>"`;
+
+exports[`Server side Renders fallBack component if children rendering throws error 1`] = `"<div>FallBack!</div>"`;
+
+exports[`Server side Renders fallBack component if children rendering throws error with new contexts 1`] = `"<div>FallBack!</div>"`;

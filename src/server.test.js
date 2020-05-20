@@ -5,7 +5,7 @@ import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import ErrorFallback, { withContext } from './index'
 import { shim, clearContexts } from './server'
-shim();
+shim()
 
 function FallBack () {
   return <div>FallBack!</div>
@@ -32,6 +32,7 @@ describe('Server side', () => {
     </ErrorFallback>)
 
     expect(html).toBe('<div><div>No errors!</div></div>')
+    expect(html).toMatchSnapshot()
   })
 
   it('Renders fallBack component if children rendering throws error', () => {
@@ -44,7 +45,8 @@ describe('Server side', () => {
       <BadComponent />
     </ErrorFallback>)
 
-    expect(html).toBe('<div><div>FallBack!</div></div>')
+    expect(html).toBe('<div>FallBack!</div>')
+    expect(html).toMatchSnapshot()
     turnOnErrors()
   })
 
@@ -78,6 +80,7 @@ describe('Server side', () => {
     )
 
     expect(html).toBe('<div><div>No errors! Context variable</div></div>')
+    expect(html).toMatchSnapshot()
   })
 
   it('Renders child component with new context dependencies', () => {
@@ -155,6 +158,7 @@ describe('Server side', () => {
     )
 
     expect(html).toBe('<div><div>No errors! Context variable1 Context variable2 Context variable3</div></div>')
+    expect(html).toMatchSnapshot()
     clearContexts()
   })
 
@@ -190,7 +194,8 @@ describe('Server side', () => {
       </ContextProvider>
     )
 
-    expect(html).toBe('<div><div>FallBack!</div></div>')
+    expect(html).toBe('<div>FallBack!</div>')
+    expect(html).toMatchSnapshot()
     turnOnErrors()
     clearContexts()
   })
