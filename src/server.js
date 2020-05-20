@@ -64,7 +64,7 @@ export function _render (self, ProvideContext) {
       const __html = renderToStaticMarkup(elementWithProviders)
       return <div dangerouslySetInnerHTML={{__html}} />
     } catch (e) {
-      return <div>{self.props.fallBack()}</div>
+      return <>{self.props.fallBack()}</>
     }
   })
 }
