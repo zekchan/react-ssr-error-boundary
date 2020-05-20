@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client side Renders child component with context dependencies 1`] = `"<div>No errors! Context variable</div>"`;
+
+exports[`Client side Renders child component with legacy context dependencies 1`] = `"<div>No errors! Context variable</div>"`;
+
+exports[`Client side Renders child component with multiple contexts dependencies 1`] = `"<div>No errors! Context variable1 Context variable2 Context variable3</div>"`;
+
+exports[`Client side Renders child component without errors 1`] = `"<div>No errors!</div>"`;
+
+exports[`Client side Renders fallBack component if children rendering throws error 1`] = `"<div>FallBack!</div>"`;
+
+exports[`Client side Renders fallBack component if children rendering throws error with contexts 1`] = `"<div>FallBack!</div>"`;
+
+exports[`Client side Renders nothing when children rendering throws error and no fallBack provided 1`] = `null`;

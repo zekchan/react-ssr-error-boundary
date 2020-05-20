@@ -11,18 +11,31 @@ export function withContext (contextTypes = {}) {
     }
     static contextTypes = contextTypes
     state = {
-      hasError: false
+      hasError: false,
+      error: null,
+      errorInfo: "",
     }
 
-    componentDidCatch () {
+    componentDidCatch(error, errorInfo) {
       this.setState({
-        hasError: true
+        hasError: true,
+        error,
+        errorInfo,
       })
     }
 
     render () {
       if (server) return server._render(this, ProvideContext)
-      return <div>{this.state.hasError ? this.props.fallBack() : this.props.children}</div>
+      const { error, errorInfo, hasError } = this.state;
+      if (hasError) {
+        return this.props.fallBack({ error, errorInfo });
+      } else {
+        if (typeof this.props.children === "function") {
+          return this.props.children({ error, errorInfo });
+        } else {
+          return this.props.children;
+        }
+      }
     }
   }
 
